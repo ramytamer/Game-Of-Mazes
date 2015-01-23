@@ -4,27 +4,12 @@ var ObjectPool = Class({
 	pool2: [],
 
 	constructor: function() {
-		// var factory = new Factory();
+		var factory = new Factory();
 		for (j = 0; j < 20; j++) {
-			this.pool.push(new(this.randomize())());
+			this.pool.push(new(factory.randomize())());
 			this.pool.push(new Coin());
-			this.pool2.push(new(this.randomize2())());
+			this.pool2.push(new(factory.randomize2())());
 		}
-	},
-	randomize: function() {
-		var rand = Math.random();
-		var opt = [Ammo, BombA, BombB, Oger, Orc];
-		rand *= 5;
-		rand = Math.floor(rand);
-		return opt[rand];
-	},
-
-	randomize2: function() {
-		var rand = Math.random();
-		var opt = [BombA, BombB, Oger, Orc];
-		rand *= 4;
-		rand = Math.floor(rand);
-		return opt[rand];
 	},
 	popPool: function() {
 		return this.pool.pop();

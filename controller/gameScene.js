@@ -1,5 +1,6 @@
 var GameScene = Class.create(Scene, {
 	randomEmpty: [],
+	dataPool: null,
 	pool: [],
 	pool2: [],
 	taken: [],
@@ -8,9 +9,9 @@ var GameScene = Class.create(Scene, {
 
 
 	initialize: function() {
-		var thePool = new ObjectPool();
-		this.pool = thePool.pool;
-		this.pool2 = thePool.pool2;
+		this.dataPool = new ObjectPool();
+		this.pool = this.dataPool.pool;
+		this.pool2 = this.dataPool.pool2;
 		Scene.apply(this);
 
 		$('.dashboard').show();
@@ -289,7 +290,7 @@ var GameScene = Class.create(Scene, {
 			// If the bomb type is B , we need to hold it some time before the explosion
 			if (bombType === 'B') {
 				// setTimeout(GS.BombExplode(hits, GS), BombB.waitTime);
-				setTimeout(GS.Dead, 200, hits, GS, 'B', AryaStark);
+				setTimeout(GS.Dead, 500, hits, GS, 'B', AryaStark);
 			} else {
 				GS.Dead(hits, GS, 'A', AryaStark);
 			}
