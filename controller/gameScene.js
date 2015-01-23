@@ -89,148 +89,20 @@ var GameScene = Class.create(Scene, {
 				Game.instance.assets['assets/Pickup_Coin2.wav'].play();
 			}
 
+			// Bullet hit BombA Or BombB Or Orc Or Oger
+			this.hitTrue(BombA, this, AryaStark);
+			this.hitTrue(BombB, this, AryaStark);
+			this.hitTrue(Orc, this, AryaStark);
+			this.hitTrue(Oger, this, AryaStark);
+			this.hitTrue(MudWall, this, AryaStark);
 
-			// Bullet hit BombA
-			var bulletBombAhits = Projectile.intersectStrict(BombA);
-			if (bulletBombAhits.length) {
-				// Get the axises of the Bomb to use it later
-				var ax_x = bulletBombAhits[0][1].x,
-					ax_y = bulletBombAhits[0][1].y;
-				// Create a new Road block to replace it
-				var road = new Road();
-				// Move the road block to the position of the mud wall to replace it
-				road.moveTo(ax_x, ax_y);
-				// Reset the value of this block in the array to make it a free space to move in
-				this.mapObjects[ax_x / 16][ax_y / 16] = road;
-				this.mazeArray[ax_x / 16][ax_y / 16] = 0;
-				// Remove the mud wall from scene
-				this.removeChild(bulletBombAhits[0][1]);
-				this.returnObjPool(bulletBombAhits[0][1]);
-				Game.instance.assets['assets/Explosion.wav'].play();
-				// Remove AryaStaro & added it again to be on top of the ground
-				this.removeChild(AryaStark);
-				// Add the road to the scene
-				this.addChild(road);
-				// Then re Add Area to be on top of the ground
-				this.addChild(AryaStark);
-				// Remove the bullet from the scene
-				this.removeChild(bulletBombAhits[0][0]);
-			}
 
-			// Bullet hit BombB
-			var bulletBombBhits = Projectile.intersectStrict(BombB);
-			if (bulletBombBhits.length) {
-				// Get the axises of the Bomb to use it later
-				var ax_x0 = bulletBombBhits[0][1].x,
-					ax_y0 = bulletBombBhits[0][1].y;
-				// Create a new Road block to replace it
-				var road0 = new Road();
-				// Move the road block to the position of the mud wall to replace it
-				road0.moveTo(ax_x0, ax_y0);
-				// Reset the value of this block in the array to make it a free space to move in
-				this.mapObjects[ax_x0 / 16][ax_y0 / 16] = road0;
-				this.mazeArray[ax_x0 / 16][ax_y0 / 16] = 0;
-				// Remove the mud wall from scene
-				this.removeChild(bulletBombBhits[0][1]);
-				this.returnObjPool(bulletBombBhits[0][1]);
-				Game.instance.assets['assets/Explosion5.wav'].play();
-				// Remove AryaStaro & added it again to be on top of the ground
-				this.removeChild(AryaStark);
-				// Add the road to the scene
-				this.addChild(road0);
-				// Then re Add Area to be on top of the ground
-				this.addChild(AryaStark);
-				// Remove the bullet from the scene
-				this.removeChild(bulletBombBhits[0][0]);
-			}
-
-			// Bullet hit Orc
-			var bulletOrchits = Projectile.intersectStrict(Orc);
-			if (bulletOrchits.length) {
-				// Get the axises of the Bomb to use it later
-				var ax_x1 = bulletOrchits[0][1].x,
-					ax_y1 = bulletOrchits[0][1].y;
-				// Create a new Road block to replace it
-				var road1 = new Road();
-				// Move the road block to the position of the mud wall to replace it
-				road1.moveTo(ax_x1, ax_y1);
-				// Reset the value of this block in the array to make it a free space to move in
-				this.mapObjects[ax_x1 / 16][ax_y1 / 16] = road1;
-				this.mazeArray[ax_x1 / 16][ax_y1 / 16] = 0;
-				// Remove the mud wall from scene
-				this.removeChild(bulletOrchits[0][1]);
-				this.returnObjPool(bulletOrchits[0][1]);
-				Game.instance.assets['assets/Explosion.wav'].play();
-				// Remove AryaStaro & added it again to be on top of the ground
-				this.removeChild(AryaStark);
-				// Add the road to the scene
-				this.addChild(road1);
-				// Then re Add Area to be on top of the ground
-				this.addChild(AryaStark);
-				// Remove the bullet from the scene
-				this.removeChild(bulletOrchits[0][0]);
-			}
-
-			// Bullet hit Oger
-			var bulletOgerhits = Projectile.intersectStrict(Oger);
-			if (bulletOgerhits.length) {
-				// Get the axises of the Bomb to use it later
-				var ax_x2 = bulletOgerhits[0][1].x,
-					ax_y2 = bulletOgerhits[0][1].y;
-				// Create a new Road block to replace it
-				var road2 = new Road();
-				// Move the road block to the position of the mud wall to replace it
-				road2.moveTo(ax_x2, ax_y2);
-				// Reset the value of this block in the array to make it a free space to move in
-				this.mapObjects[ax_x2 / 16][ax_y2 / 16] = road2;
-				this.mazeArray[ax_x2 / 16][ax_y2 / 16] = 0;
-				// Remove the mud wall from scene
-				this.removeChild(bulletOgerhits[0][1]);
-				this.returnObjPool(bulletOgerhits[0][1]);
-				Game.instance.assets['assets/Explosion5.wav'].play();
-				// Remove AryaStaro & added it again to be on top of the ground
-				this.removeChild(AryaStark);
-				// Add the road to the scene
-				this.addChild(road2);
-				// Then re Add Area to be on top of the ground
-				this.addChild(AryaStark);
-				// Remove the bullet from the scene
-				this.removeChild(bulletOgerhits[0][0]);
-			}
-
-			// Bullet Intersection with the mud wall
-			var bulletMudWall = Projectile.intersectStrict(MudWall);
-			if (bulletMudWall.length) {
-				// Get the axises of the mud wall to use it later
-				var axis_x = bulletMudWall[0][1].x,
-					axis_y = bulletMudWall[0][1].y;
-				// Create a new Road block to replace it
-				var r = new Road();
-				// Move the road block to the position of the mud wall to replace it
-				r.moveTo(axis_x, axis_y);
-				// Reset the value of this block in the array to make it a free space to move in
-				this.mapObjects[axis_x / 16][axis_y / 16] = r;
-				this.mazeArray[axis_x / 16][axis_y / 16] = 0;
-				// Remove the mud wall from scene
-				this.removeChild(bulletMudWall[0][1]);
-				Game.instance.assets['assets/Explosion2.wav'].play();
-				// Remove AryaStaro & added it again to be on top of the ground
-				this.removeChild(AryaStark);
-				// Add the road to the scene
-				this.addChild(r);
-				// Then re Add Area to be on top of the ground
-				this.addChild(AryaStark);
-				// Remove the bullet from the scene
-				this.removeChild(bulletMudWall[0][0]);
-			}
 
 			// Bullet intersection with the wall make it disappear
 			var bulletStoneWall = Projectile.intersectStrict(StoneWall);
 			if (bulletStoneWall.length) {
 				this.removeChild(bulletStoneWall[0][0]);
 			}
-
-
 
 
 			if (game.input.space && this.ammo > 0) {
@@ -423,7 +295,35 @@ var GameScene = Class.create(Scene, {
 			}
 		}
 	},
+	hitTrue: function(targetClass, GS, AryaStark) {
+		var targetClassHits = Projectile.intersectStrict(targetClass);
 
+		if (targetClassHits.length) {
+			// Get the axises of the Bomb to use it later
+			var ax_x = targetClassHits[0][1].x,
+				ax_y = targetClassHits[0][1].y;
+			// Create a new Road block to replace it
+			var road = new Road();
+			// Move the road block to the position of the mud wall to replace it
+			road.moveTo(ax_x, ax_y);
+			// Reset the value of this block in the array to make it a free space to move in
+			GS.mapObjects[ax_x / 16][ax_y / 16] = road;
+			GS.mazeArray[ax_x / 16][ax_y / 16] = 0;
+			// Remove the mud wall from scene
+			GS.removeChild(targetClassHits[0][1]);
+			GS.returnObjPool(targetClassHits[0][1]);
+			Game.instance.assets['assets/Explosion.wav'].play();
+			// Remove AryaStaro & added it again to be on top of the ground
+			GS.removeChild(AryaStark);
+			// Add the road to the scene
+			GS.addChild(road);
+			// Then re Add Area to be on top of the ground
+			GS.addChild(AryaStark);
+			// Remove the bullet from the scene
+			GS.removeChild(targetClassHits[0][0]);
+		}
+
+	},
 
 	Dead: function(hits, GS, dType, AryaStark) {
 		var explosion = new Animation();

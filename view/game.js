@@ -30,14 +30,17 @@ window.onload = function() {
 		var startScene = new StartScene();
 		game.pushScene(startScene);
 		var sound = new Audio('assets/sot.mp3');
-		sound.volume = 0.15;
+		sound.volume = 0.45;
 		sound.play();
 		setInterval(function() {
 			if (sound.currentTime >= 24)
 				sound.currentTime = 0;
 		}, 1000);
 
-
+		document.addEventListener('keyup', function(e) {
+			if (e.keyCode == 77)
+				sound.volume = sound.volume == 0.45 ? 0 : 0.45;
+		});
 	};
 	game.start();
 };
