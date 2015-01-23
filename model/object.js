@@ -152,11 +152,11 @@ var Oger = Class.create(Character, {
 		this.image = Game.instance.assets['assets/chara5.png'];
 		this.animationDuration = 0;
 
-		/*this.tl.moveBy(0, -16, 15)
-			.moveBy(0, 16, 15)
-			.moveBy(-16, 0, 15)
-			.moveBy(16, 0, 15)
-			.loop();*/
+		this.tl.moveBy(0, -32, 15)
+			.moveBy(0, 32, 15)
+			.moveBy(-32, 0, 15)
+			.moveBy(32, 0, 15)
+			.loop();
 	},
 	turnUp: function() {
 		this.animationArray = [28, 29, 27];
@@ -194,11 +194,11 @@ var Orc = Class.create(Character, {
 		this.image = Game.instance.assets['assets/chara7.png'];
 		this.animationDuration = 0;
 
-		/*this.tl.moveBy(0, -16, 15)
+		this.tl.moveBy(0, -16, 15)
 			.moveBy(0, 16, 15)
 			.moveBy(-16, 0, 15)
 			.moveBy(16, 0, 15)
-			.loop();*/
+			.loop();
 	},
 	turnUp: function() {
 		this.animationArray = [28, 29, 27];
