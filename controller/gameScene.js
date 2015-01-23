@@ -159,7 +159,7 @@ var GameScene = Class.create(Scene, {
 			}
 
 			var anim = new Animation();
-			if (Math.floor(Math.random() * 10000) > 9900) {
+			if (Math.floor(Math.random() * 10000) > 9000) {
 				if (this.pool.length > 0) {
 					var rand = Math.floor(Math.random() * this.randomEmpty.length);
 					var temp = this.randomEmpty[rand];

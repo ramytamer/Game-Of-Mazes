@@ -153,9 +153,13 @@ var Oger = Class.create(Character, {
 		this.animationDuration = 0;
 
 		this.tl.moveBy(0, -32, 30)
+			.delay(30)
 			.moveBy(0, 32, 30)
+			.delay(30)
 			.moveBy(-32, 0, 30)
+			.delay(30)
 			.moveBy(32, 0, 30)
+			.delay(30)
 			.loop();
 	},
 	turnUp: function() {
@@ -195,9 +199,13 @@ var Orc = Class.create(Character, {
 		this.animationDuration = 0;
 
 		this.tl.moveBy(0, -16, 15)
+			.delay(30)
 			.moveBy(0, 16, 15)
+			.delay(30)
 			.moveBy(-16, 0, 15)
+			.delay(30)
 			.moveBy(16, 0, 15)
+			.delay(30)
 			.loop();
 	},
 	turnUp: function() {
