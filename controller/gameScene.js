@@ -4,7 +4,8 @@ var GameScene = Class.create(Scene, {
 	pool2: [],
 	taken: [],
 	ammo: 10,
-	score: 0,
+	score: 1000,
+
 
 	initialize: function() {
 		var thePool = new ObjectPool();
@@ -12,8 +13,16 @@ var GameScene = Class.create(Scene, {
 		this.pool2 = thePool.pool2;
 		Scene.apply(this);
 
+		$('.dashboard').show();
+		$('#ammo').text(this.ammo);
+		$('#score').text(this.score);
+
 		// GameScene instance variable
 		var GS = this;
+
+		setInterval(function() {
+			GS.score -= 1;
+		}, 1000, GS);
 
 		// TO-DO change Game class
 		var game = Game.instance;
@@ -59,12 +68,14 @@ var GameScene = Class.create(Scene, {
 		AryaStark.moveTo(16, 16);
 
 		this.addEventListener('enterframe', function() {
+			$('#score').text(this.score);
+
 			var heroCoinHits = AryaStark.intersect(Coin);
 			if (heroCoinHits.length) {
 				// Remove the coin
 				this.removeChild(heroCoinHits[0]);
 				this.returnObjPool(this.pool2.pop());
-				this.score+=10;
+				this.score += 10;
 				Game.instance.assets['assets/Pickup_Coin.wav'].play();
 			}
 
@@ -73,7 +84,8 @@ var GameScene = Class.create(Scene, {
 				// Remove the coin
 				this.removeChild(heroAmmoHits[0]);
 				this.returnObjPool(heroAmmoHits[0]);
-				this.ammo+=5;
+				this.ammo += 5;
+				$('#ammo').text(this.ammo);
 				Game.instance.assets['assets/Pickup_Coin2.wav'].play();
 			}
 
@@ -220,9 +232,11 @@ var GameScene = Class.create(Scene, {
 
 
 
-			if (game.input.space && this.ammo>0) {
+
+			if (game.input.space && this.ammo > 0) {
 				game.input.space = false;
 				this.addChild(this.fire(AryaStark));
+				$('#ammo').text(this.ammo);
 				Game.instance.assets['assets/Laser_Shoot.wav'].play();
 			}
 
@@ -314,7 +328,8 @@ var GameScene = Class.create(Scene, {
 
 		// Create an empty array of maps objects
 		var mapObjects = create2dArray(mazeArray.length);
-		var xAxis=[-1,0,1,0],yAxis=[0,1,0,-1];
+		var xAxis = [-1, 0, 1, 0],
+			yAxis = [0, 1, 0, -1];
 		/*	
 			Directions : North=0
 						 East =1
@@ -345,7 +360,8 @@ var GameScene = Class.create(Scene, {
 					if (i > 2 && j > 2) {
 						var obstacle = this.getObjPool();
 						obstacle.moveTo(i * 16, j * 16);
-						if(obstacle.type=='Oger'){/*
+						if (obstacle.type == 'Oger') {
+							/*
 							while(true){
 								var direction=Math.floor((Math.random() * 4));
 								var distance=0;
@@ -364,16 +380,7 @@ var GameScene = Class.create(Scene, {
 							*/
 
 						}
-						if(obstacle.type=='Orc'){
-							if(mazeArray[i+xAxis[0]][j+yAxis[0]])
-								obstacle.north=0;
-							else if(mazeArray[i+xAxis[1]][j+yAxis[1]])
-								obstacle.east=0;
-							else if(mazeArray[i+xAxis[2]][j+yAxis[2]])
-								obstacle.south=0;
-							else if(mazeArray[i+xAxis[3]][j+yAxis[3]])
-								obstacle.west=0;
-						}
+
 						this.addChild(obstacle);
 					}
 				}

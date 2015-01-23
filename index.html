@@ -23,12 +23,21 @@
     body{
       background-color: #1A1818
     }
-    #score {
+    .dashboard {
       position: absolute;
-      bottom: 0;
+      top:0;
+      left:10px;
+      color: white;
+      font-family: courier;
+      font-size: 1.5em;display: none;
     }
   </style>
   <body>
-    <div id="score"></div>
+   <div class="dashboard">
+     Score<div id="score"></div>
+   </div>
+   <div class="dashboard" style="top:60px !important;">
+     Ammo <div id="ammo"></div>
+   </div>
   </body>
 </html>

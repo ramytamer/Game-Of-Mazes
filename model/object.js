@@ -144,14 +144,19 @@ var Hero = Class.create(Character, {
 });
 
 var Oger = Class.create(Character, {
-	type:'Oger',
-	direction:0,
-	distance:0,
+	type: 'Oger',
+	direction: 0,
+	distance: 0,
 	initialize: function() {
 		Character.apply(this);
 		this.image = Game.instance.assets['assets/chara5.png'];
 		this.animationDuration = 0;
 
+		/*this.tl.moveBy(0, -16, 15)
+			.moveBy(0, 16, 15)
+			.moveBy(-16, 0, 15)
+			.moveBy(16, 0, 15)
+			.loop();*/
 	},
 	turnUp: function() {
 		this.animationArray = [28, 29, 27];
@@ -176,27 +181,24 @@ var Oger = Class.create(Character, {
 });
 
 var Orc = Class.create(Character, {
-	xAxis:[-1,0,1,0],
-	yAxis:[0,1,0,-1],
-	type:'Orc',
+	xAxis: [-1, 0, 1, 0],
+	yAxis: [0, 1, 0, -1],
+	type: 'Orc',
 	// diection ==0 not accessible
-	north:1,
-	east:1,
-	south:1,
-	west:1,
+	north: 1,
+	east: 1,
+	south: 1,
+	west: 1,
 	initialize: function() {
 		Character.apply(this);
 		this.image = Game.instance.assets['assets/chara7.png'];
 		this.animationDuration = 0;
-		/*this.tl.moveBy(this.x+16*this.xAxis[0]*this.north,this,this.y+16*this.yAxis[0]*this.north,15)
-		       .moveBy(this.x-16*this.xAxis[0]*this.north,this,this.y-16*this.yAxis[0]*this.north,15)
-			   .moveBy(this.x+16*this.xAxis[1]*this.east,this,this.y+16*this.yAxis[1]*this.east,15)
-			   .moveBy(this.x-16*this.xAxis[1]*this.east,this,this.y-16*this.yAxis[1]*this.east,15)
-			   .moveBy(this.x+16*this.xAxis[2]*this.south,this,this.y+16*this.yAxis[2]*this.south,15)
-			   .moveBy(this.x-16*this.xAxis[2]*this.south,this,this.y-16*this.yAxis[2]*this.south,15)
-			   .moveBy(this.x+16*this.xAxis[3]*this.west,this,this.y+16*this.yAxis[3]*this.west,15)
-			   .moveBy(this.x-16*this.xAxis[3]*this.west,this,this.y-16*this.yAxis[3]*this.west,15).loop();
-			   */
+
+		/*this.tl.moveBy(0, -16, 15)
+			.moveBy(0, 16, 15)
+			.moveBy(-16, 0, 15)
+			.moveBy(16, 0, 15)
+			.loop();*/
 	},
 	turnUp: function() {
 		this.animationArray = [28, 29, 27];
