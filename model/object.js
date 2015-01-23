@@ -152,10 +152,10 @@ var Oger = Class.create(Character, {
 		this.image = Game.instance.assets['assets/chara5.png'];
 		this.animationDuration = 0;
 
-		this.tl.moveBy(0, -32, 7)
-			.moveBy(0, 32, 7)
-			.moveBy(-32, 0, 7)
-			.moveBy(32, 0, 7)
+		this.tl.moveBy(0, -32, 30)
+			.moveBy(0, 32, 30)
+			.moveBy(-32, 0, 30)
+			.moveBy(32, 0, 30)
 			.loop();
 	},
 	turnUp: function() {
