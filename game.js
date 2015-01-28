@@ -9,16 +9,15 @@ window.onload = function() {
 		'assets/chara0.png',
 		'assets/icon0.png',
 		'assets/effect0.png',
+		'assets/start.png',
 		'assets/sot.mp3'
 	);
 	game.fps = 30;
 	game.scale = 1;
 	game.onload = function() {
-		var scene = new GameScene();
-		game.pushScene(scene);
-
-
-
+		 
+		var startScene = new StartScene();
+		game.pushScene(startScene);
 		/*var sound = new Audio('assets/sot.mp3');
 		sound.play();
 		setInterval(function() {
