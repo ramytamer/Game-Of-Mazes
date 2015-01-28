@@ -253,8 +253,7 @@ var GameScene = Class.create(Scene, {
 			explosionHit = true;
 			// We don't stop the game because we want to wait until the explosion animation finish
 			AryaStark.isAlive = false;
-			// Game.instance.stop();
-		}
+			// Game.instance.stop();		}
 
 		GS.addChild(explosion);
 		GS.removeChild(hits[0]);
@@ -317,4 +316,11 @@ var sleep = function(milliseconds) {
 			break;
 		}
 	}
+};
+
+toEndScene=function(status){
+	/*
+		end the game status == 0 lose , status ==1 win
+	*/
+	Game.instance.replaceScene(new EndScene(status));
 };

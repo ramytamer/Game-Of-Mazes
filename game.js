@@ -10,6 +10,8 @@ window.onload = function() {
 		'assets/icon0.png',
 		'assets/effect0.png',
 		'assets/start.png',
+		'assets/gameover.png',
+		'assets/survived.png',
 		'assets/sot.mp3'
 	);
 	game.fps = 30;
