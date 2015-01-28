@@ -12,7 +12,7 @@ var StartScene=Class.create(Scene,{
 				Game.instance.replaceScene(new GameScene());
 				console.info("GAME Started");
 			} else if (e.keyCode == 72 && inStart) {
-				$.jAlert('How to play', '');
+				jAlert('How to play', '');
 			}
 		});
 	}
