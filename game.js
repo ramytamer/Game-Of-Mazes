@@ -28,5 +28,4 @@ window.onload = function() {
 
 	};
 	game.start();
-	gameIsRunning = true;
-};
+};	
