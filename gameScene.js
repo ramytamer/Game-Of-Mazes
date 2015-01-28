@@ -253,7 +253,8 @@ var GameScene = Class.create(Scene, {
 			explosionHit = true;
 			// We don't stop the game because we want to wait until the explosion animation finish
 			AryaStark.isAlive = false;
-			// Game.instance.stop();		}
+			// Game.instance.stop();		
+		}
 
 		GS.addChild(explosion);
 		GS.removeChild(hits[0]);
@@ -268,6 +269,7 @@ var GameScene = Class.create(Scene, {
 				// Game.instance.stop();
 			}
 		}, 1000, explosion, GS);
+		
 	},
 	fire: function(AryaStark) {
 		var bullet = new Projectile();
