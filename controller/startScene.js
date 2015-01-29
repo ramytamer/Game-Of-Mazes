@@ -12,8 +12,18 @@ var StartScene=Class.create(Scene,{
 				Game.instance.replaceScene(new GameScene());
 				console.info("GAME Started");
 			} else if (e.keyCode == 72 && inStart) {
-				$.jAlert('How to play', '');
+				window.alert('move up : up arrow\n'+
+					'move down : down arrow\n'+
+					'move right : right arrow\n'+
+					'move left : left arrow\n'+
+					'turn up : up arrow + shift\n'+
+					'turn down : down arrow + shift\n'+
+					'turn right : right arrow + shift\n'+
+					'turn left : left arrow + shift\n'+
+					'shoot : space\n'+
+					'pause : p\n');
 			}
 		});
 	}
 });
+
