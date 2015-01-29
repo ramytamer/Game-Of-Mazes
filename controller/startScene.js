@@ -23,9 +23,10 @@ var StartScene=Class.create(Scene,{
 					'turn right : right arrow + shift\n'+
 					'turn left : left arrow + shift\n'+
 					'shoot : space\n'+
-					'pause : p\n'+
+					'pause : P\n'+
 					'Bombs : \nA- grenade :exploid if Arya touches it\n'+
-					'B- Land mine exploid if arya stand on it for 0.5 second/n'
+					'B- Land mine exploid if arya stand on it for 0.5 second/n'+
+					'mute : M\n'
 				});
 			}
 		});
