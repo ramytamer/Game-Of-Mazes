@@ -314,7 +314,13 @@ var GameScene = Class.create(Scene, {
 
 		// Create an empty array of maps objects
 		var mapObjects = create2dArray(mazeArray.length);
-
+		var xAxis=[-1,0,1,0],yAxis=[0,1,0,-1];
+		/*	
+			Directions : North=0
+						 East =1
+						 South =2
+						 West =3
+		*/
 		for (i = 0; i < mazeArray.length; i++) {
 			for (j = 0; j < mazeArray.length; j++) {
 				if (mazeArray[i][j] === 1 && !isBoundaries(i, j, mazeArray.length)) {
@@ -337,9 +343,38 @@ var GameScene = Class.create(Scene, {
 				this.addChild(mapObjects[i][j]);
 				if (this.randomizePick() > 0.95 && this.pool.length > 0 && mazeArray[i][j] === 0) {
 					if (i > 2 && j > 2) {
-						var _5od = this.getObjPool();
-						_5od.moveTo(i * 16, j * 16);
-						this.addChild(_5od);
+						var obstacle = this.getObjPool();
+						obstacle.moveTo(i * 16, j * 16);
+						if(obstacle.type=='Oger'){/*
+							while(true){
+								var direction=Math.floor((Math.random() * 4));
+								var distance=0;
+								while(!this.isNotAllowed(i+xAxis[direction],j+yAxis[direction])){
+									distance++;
+
+								}
+								console.log(distance);
+								if(distance>0){
+									console.log(distance);
+									obstacle.direction=direction;
+									obstacle.distance=distance;
+									break;
+								}
+							}
+							*/
+
+						}
+						if(obstacle.type=='Orc'){
+							if(mazeArray[i+xAxis[0]][j+yAxis[0]])
+								obstacle.north=0;
+							else if(mazeArray[i+xAxis[1]][j+yAxis[1]])
+								obstacle.east=0;
+							else if(mazeArray[i+xAxis[2]][j+yAxis[2]])
+								obstacle.south=0;
+							else if(mazeArray[i+xAxis[3]][j+yAxis[3]])
+								obstacle.west=0;
+						}
+						this.addChild(obstacle);
 					}
 				}
 			}

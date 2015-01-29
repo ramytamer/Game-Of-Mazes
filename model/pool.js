@@ -25,5 +25,18 @@ var ObjectPool = Class({
     rand *= 4;
     rand = Math.floor(rand);
     return opt[rand];
+  },
+  popPool:function(){
+    return this.pool.pop();
+  },
+  pushPool:function(x){
+    this.pool.push(x);
+  },
+  popPool2:function(){
+    return this.pool2.pop();
+  },
+  pushPool2:function(x){
+    this.pool2.push(x);
   }
+
 });
