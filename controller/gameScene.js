@@ -308,8 +308,12 @@ var GameScene = Class.create(Scene, {
 			// Move the road block to the position of the mud wall to replace it
 			road.moveTo(ax_x, ax_y);
 			// Reset the value of this block in the array to make it a free space to move in
-			GS.mapObjects[ax_x / 16][ax_y / 16] = road;
-			GS.mazeArray[ax_x / 16][ax_y / 16] = 0;
+			if (GS.mapObjects[ax_x / 16] && GS.mapObjects[ax_x / 16][ax_y / 16]) {
+				GS.mapObjects[ax_x / 16][ax_y / 16] = road;
+			}
+			if (GS.mazeArray[ax_x / 16] && GS.mazeArray[ax_x / 16][ax_y / 16]) {
+				GS.mazeArray[ax_x / 16][ax_y / 16] = 0;
+			}
 			// Remove the mud wall from scene
 			GS.removeChild(targetClassHits[0][1]);
 			GS.returnObjPool(targetClassHits[0][1]);
