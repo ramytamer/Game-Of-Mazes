@@ -12,9 +12,9 @@
   <script src="controller/startScene.js"></script>
   <script src="controller/gameScene.js"></script>
   <script src="controller/endScene.js"></script>
-  <script src="library/sweet-alert.min.js"></script>
+  <script src="library/sweetalert.min.js"></script>
   <link rel="stylesheet" href="library/normalize.css">
-  <link rel="stylesheet" href="library/sweet-alert.css">
+  <link rel="stylesheet" href="library/sweetalert.css">
   <style>
     #enchant-stage{
       position: relative !important;
@@ -40,5 +40,25 @@
    <div class="dashboard" style="top:60px !important;">
      Ammo <div id="ammo"></div>
    </div>
+   <div class="dashboard" id="scores" style="top: 140px !important">
+     Scores
+     <hr>
+     <span></span>
+   </div>
+
+   <script>
+    var scores;
+      if (! localStorage || !localStorage.scores || localStorage.scores === '') scores = [];
+
+      scores = JSON.parse(localStorage.scores);
+
+      scores.sort(function(a, b){ return (a.score < b.score ? 1 : (a.score > b.score ? -1 : 0)); });
+
+      var scoreBoard = $('#scores span');
+      $('#scores span').html('');
+      for (var i = 0; i < scores.length; i++) {
+        scoreBoard.append('<p>' + scores[i].name + ' - ' + scores[i].score + '</p>');
+      }
+   </script>
   </body>
 </html>
