@@ -54,9 +54,7 @@
 
    <script>
     var scores;
-      if (! localStorage || !localStorage.scores || localStorage.scores === '') scores = [];
-
-      scores = JSON.parse(localStorage.scores);
+      scores = (localStorage.scores && localStorage.scores !== '') ? JSON.parse(localStorage.scores) : [] ;
 
       scores.sort(function(a, b){ return (a.score < b.score ? 1 : (a.score > b.score ? -1 : 0)); });
 
