@@ -10,6 +10,7 @@ window.myFirebaseRef.child('scores').on('value', function(snapshot) {
     var scoreBoard = $('#scores span');
     $('#scores span').html('');
     for (var i = 0; i < scores.length; i++) {
-        scoreBoard.append('<p>' + scores[i].name + ' - ' + scores[i].score + '</p>');
+        var style =  (i === 0) ? 'style="color: green"' : '';
+        scoreBoard.append('<p ' + style + '>' + scores[i].name + ' - ' + scores[i].score + '</p>');
     }
 }); 
