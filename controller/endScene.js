@@ -13,7 +13,7 @@ var EndScene = Class.create(Scene, {
 		var score = parseInt($('#score').text());
 
 		/** if user finished alive, add 1000 point to the score */
-		if (status) { score += 1000; }
+		if (status) { score += 1000; $('#score').text(score); }
 
 		var scores = self.fetchScores();
 		var highScore = scores.length ? parseInt(scores[0].score) : 0;
