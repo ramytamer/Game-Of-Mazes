@@ -15,8 +15,7 @@ var EndScene = Class.create(Scene, {
 		/** if user finished alive, add 1000 point to the score */
 		if (status) { score += 1000; $('#score').text(score); }
 
-		var scores = self.fetchScores();
-		var highScore = scores.length ? parseInt(scores[0].score) : 0;
+		var highScore = window.scores.length ? parseInt(window.scores[0].score) : 0;
 
 		swal({
 			title: (score > highScore ? 'New High Score (Y)' : 'Not so good :('),
@@ -38,13 +37,6 @@ var EndScene = Class.create(Scene, {
 
 			self.addScore(name, score);
 
-			scores = self.fetchScores();
-			var scoreBoard = $('#scores span');
-			$('#scores span').html('');
-			for (var i = 0; i < scores.length; i++) {
-				scoreBoard.append('<p>' + scores[i].name + ' - ' + scores[i].score + '</p>');
-			}
-
 			if (status) {
 				self.addChild(survived);
 			} else {
@@ -56,17 +48,10 @@ var EndScene = Class.create(Scene, {
 	},
 
 	addScore: function(name, score) {
-		if (!localStorage) return;
-		if (!localStorage.scores || localStorage.scores === '') localStorage.scores = JSON.stringify([]);
-
-		var scores = JSON.parse(localStorage.scores);
-
-		scores.push({
+		window.myFirebaseRef.child('scores').push({
 			name: name,
 			score: score
 		});
-
-		localStorage.scores = JSON.stringify(scores);
 	},
 
 	fetchScores: function() {
