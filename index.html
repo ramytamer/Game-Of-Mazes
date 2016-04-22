@@ -16,29 +16,7 @@
   <link rel="stylesheet" href="library/normalize.css">
   <link rel="stylesheet" href="library/sweetalert.css">
   <link rel="stylesheet" href="library/fonts.css">
-  <style>
-    html,
-    body,
-    * {
-      font-family: 'Press Start 2P', cursive !important;
-    }
-    #enchant-stage{
-      position: relative !important;
-      display: block !important;
-      margin: 0 auto;
-    }
-    body{
-      background-color: #1A1818
-    }
-    .dashboard {
-      position: absolute;
-      top:0;
-      left:10px;
-      color: white;
-      font-family: courier;
-      font-size: 1.5em;display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
   <body>
    <div class="dashboard">
      Score<div id="score"></div>
@@ -52,17 +30,6 @@
      <span></span>
    </div>
 
-   <script>
-    var scores;
-      scores = (localStorage.scores && localStorage.scores !== '') ? JSON.parse(localStorage.scores) : [] ;
-
-      scores.sort(function(a, b){ return (a.score < b.score ? 1 : (a.score > b.score ? -1 : 0)); });
-
-      var scoreBoard = $('#scores span');
-      $('#scores span').html('');
-      for (var i = 0; i < scores.length; i++) {
-        scoreBoard.append('<p>' + scores[i].name + ' - ' + scores[i].score + '</p>');
-      }
-   </script>
+   <script src="index.js"></script>
   </body>
 </html>

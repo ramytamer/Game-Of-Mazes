@@ -1,0 +1,21 @@
+html,
+body,
+* {
+  font-family: 'Press Start 2P', cursive !important;
+}
+#enchant-stage{
+  position: relative !important;
+  display: block !important;
+  margin: 0 auto;
+}
+body{
+  background-color: #1A1818
+}
+.dashboard {
+  position: absolute;
+  top:0;
+  left:10px;
+  color: white;
+  font-family: courier;
+  font-size: 1.5em;display: none;
+}
