@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  font-weight: 400;
+  font-style: normal;
+  src: url('fonts/Press-Start-2P-regular/Press-Start-2P-regular.eot');
+  src: url('fonts/Press-Start-2P-regular/Press-Start-2P-regular.eot?#iefix') format('embedded-opentype'),
+       local('Press Start 2P'),
+       local('Press-Start-2P-regular'),
+       url('fonts/Press-Start-2P-regular/Press-Start-2P-regular.woff2') format('woff2'),
+       url('fonts/Press-Start-2P-regular/Press-Start-2P-regular.woff') format('woff'),
+       url('fonts/Press-Start-2P-regular/Press-Start-2P-regular.ttf') format('truetype'),
+       url('fonts/Press-Start-2P-regular/Press-Start-2P-regular.svg#PressStart2P') format('svg');
+}
+

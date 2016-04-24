@@ -12,27 +12,13 @@
   <script src="controller/startScene.js"></script>
   <script src="controller/gameScene.js"></script>
   <script src="controller/endScene.js"></script>
-  <script src="library/sweet-alert.min.js"></script>
+  <script src="library/sweetalert.min.js"></script>
   <link rel="stylesheet" href="library/normalize.css">
-  <link rel="stylesheet" href="library/sweet-alert.css">
-  <style>
-    #enchant-stage{
-      position: relative !important;
-      display: block !important;
-      margin: 0 auto;
-    }
-    body{
-      background-color: #1A1818
-    }
-    .dashboard {
-      position: absolute;
-      top:0;
-      left:10px;
-      color: white;
-      font-family: courier;
-      font-size: 1.5em;display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="library/sweetalert.css">
+  <link rel="stylesheet" href="library/fonts.css">
+  <link rel="stylesheet" href="index.css">
+
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <body>
    <div class="dashboard">
      Score<div id="score"></div>
@@ -40,5 +26,12 @@
    <div class="dashboard" style="top:60px !important;">
      Ammo <div id="ammo"></div>
    </div>
+   <div class="dashboard" id="scores" style="top: 140px !important">
+     Scores
+     <hr>
+     <span></span>
+   </div>
+
+   <script src="index.js"></script>
   </body>
 </html>

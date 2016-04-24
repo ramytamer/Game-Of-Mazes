@@ -77,7 +77,8 @@ var GameScene = Class.create(Scene, {
 				this.removeChild(heroCoinHits[0]);
 				this.returnObjPool(this.pool2.pop());
 				this.score += 10;
-				Game.instance.assets['assets/Pickup_Coin.wav'].play();
+				new Audio('assets/Pickup_Coin.wav').play();
+				// Game.instance.assets['assets/Pickup_Coin.wav'].play();
 			}
 
 			var heroAmmoHits = AryaStark.intersect(Ammo);
@@ -87,7 +88,8 @@ var GameScene = Class.create(Scene, {
 				this.returnObjPool(heroAmmoHits[0]);
 				this.ammo += 5;
 				$('#ammo').text(this.ammo);
-				Game.instance.assets['assets/Pickup_Coin2.wav'].play();
+				new Audio('assets/Pickup_Coin2.wav').play();
+				// Game.instance.assets['assets/Pickup_Coin2.wav'].play();
 			}
 
 			// Bullet hit BombA Or BombB Or Orc Or Oger
@@ -110,7 +112,8 @@ var GameScene = Class.create(Scene, {
 				game.input.space = false;
 				this.addChild(this.fire(AryaStark));
 				$('#ammo').text(this.ammo);
-				Game.instance.assets['assets/Laser_Shoot.wav'].play();
+				new Audio('assets/Laser_Shoot.wav').play();
+				// Game.instance.assets['assets/Laser_Shoot.wav'].play();
 			}
 
 			if (AryaStark.isMoving && AryaStark.isAlive) {
@@ -308,12 +311,17 @@ var GameScene = Class.create(Scene, {
 			// Move the road block to the position of the mud wall to replace it
 			road.moveTo(ax_x, ax_y);
 			// Reset the value of this block in the array to make it a free space to move in
-			GS.mapObjects[ax_x / 16][ax_y / 16] = road;
-			GS.mazeArray[ax_x / 16][ax_y / 16] = 0;
+			if (GS.mapObjects[ax_x / 16] && GS.mapObjects[ax_x / 16][ax_y / 16]) {
+				GS.mapObjects[ax_x / 16][ax_y / 16] = road;
+			}
+			if (GS.mazeArray[ax_x / 16] && GS.mazeArray[ax_x / 16][ax_y / 16]) {
+				GS.mazeArray[ax_x / 16][ax_y / 16] = 0;
+			}
 			// Remove the mud wall from scene
 			GS.removeChild(targetClassHits[0][1]);
 			GS.returnObjPool(targetClassHits[0][1]);
-			Game.instance.assets['assets/Explosion.wav'].play();
+			new Audio('assets/Explosion.wav').play();
+			// Game.instance.assets['assets/Explosion.wav'].play();
 			// Remove AryaStaro & added it again to be on top of the ground
 			GS.removeChild(AryaStark);
 			// Add the road to the scene
@@ -344,7 +352,8 @@ var GameScene = Class.create(Scene, {
 			if (dType !== 'E') {
 				GS.addChild(explosion);
 				GS.removeChild(hits[0]);
-				Game.instance.assets['assets/Explosion8.wav'].play();
+				new Audio('assets/Explosion8.wav').play();
+				// Game.instance.assets['assets/Explosion8.wav'].play();
 				setTimeout(function() {
 					GS.removeChild(explosion);
 					this.toEndScene(0);
