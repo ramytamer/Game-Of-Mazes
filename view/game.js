@@ -1,5 +1,6 @@
 enchant();
 var gameIsRunning = false;
+var soundIsPlaying = false;
 window.onload = function() {
 	var game = new Game(41 * 16, 41 * 16);
 	game.preload('assets/map1.png',
@@ -31,15 +32,18 @@ window.onload = function() {
 		game.pushScene(startScene);
 		var sound = new Audio('assets/sot.mp3');
 		sound.volume = 0.45;
-		sound.play();
 		setInterval(function() {
 			if (sound.currentTime >= 24)
 				sound.currentTime = 0;
 		}, 1000);
 
 		document.addEventListener('keyup', function(e) {
-			if (e.keyCode == 77)
+			if (e.keyCode == 77) {
 				sound.volume = sound.volume == 0.45 ? 0 : 0.45;
+			} else if (e.keyCode == 83 && !soundIsPlaying) {
+				soundIsPlaying = true;
+				sound.play();
+			}
 		});
 	};
 	game.start();
